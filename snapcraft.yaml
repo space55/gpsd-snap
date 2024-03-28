@@ -1,0 +1,75 @@
+name: fiftyfive-gpsd
+version: '3.25'
+summary: GPS Daemon
+description: |
+  gpsd is a service daemon that monitors one or more GPSes or AIS receivers attached to a host computer through serial or USB ports, making all data on the location/course/velocity of the sensors available to be queried on TCP port 2947 of the host computer.
+
+confinement: strict
+base: core22
+grade: devel
+architectures:
+  - build-on: s390x
+  - build-on: ppc64el
+  - build-on: arm64
+  - build-on: armhf
+  - build-on: amd64
+  - build-on: i386
+
+parts:
+  gpsd:
+    plugin: scons
+    source: https://download.savannah.gnu.org/releases/gpsd/gpsd-$SNAPCRAFT_PROJECT_VERSION.tar.gz
+    build-packages:
+      - gcc
+      - scons
+      - python3
+      - python3-dev
+
+apps:
+  gpsd:
+    command: usr/local/sbin/gpsd
+  gegps:
+    command: usr/local/bin/gegps
+  gps2udp:
+    command: usr/local/bin/gps2udp
+  gpscat:
+    command: usr/local/bin/gpscat
+  gpscsv:
+    command: usr/local/bin/gpscsv
+  gpsctl:
+    command: usr/local/bin/gpsctl
+  gpsdebuginfo:
+    command: usr/local/bin/gpsdebuginfo
+  gpsdecode:
+    command: usr/local/bin/gpsdecode
+  gpsfake:
+    command: usr/local/bin/gpsfake
+  gpspipe:
+    command: usr/local/bin/gpspipe
+  gpsplot:
+    command: usr/local/bin/gpsplot
+  gpsprof:
+    command: usr/local/bin/gpsprof
+  gpsrinex:
+    command: usr/local/bin/gpsrinex
+  gpssnmp:
+    command: usr/local/bin/gpssnmp
+  gpssubframe:
+    command: usr/local/bin/gpssubframe
+  gpxlogger:
+    command: usr/local/bin/gpxlogger
+  lcdgps:
+    command: usr/local/bin/lcdgps
+  ntpshmmon:
+    command: usr/local/bin/ntpshmmon
+  ppscheck:
+    command: usr/local/bin/ppscheck
+  ubxtool:
+    command: usr/local/bin/ubxtool
+  xgps:
+    command: usr/local/bin/xgps
+  xgpsspeed:
+    command: usr/local/bin/xgpsspeed
+  zerk:
+    command: usr/local/bin/zerk
+
