@@ -18,7 +18,7 @@ architectures:
 parts:
   gpsd:
     plugin: scons
-    source: https://download.savannah.gnu.org/releases/gpsd/gpsd-$SNAPCRAFT_PROJECT_VERSION.tar.gz
+    source: https://mirrors.ocf.berkeley.edu/nongnu/gpsd/gpsd-$SNAPCRAFT_PROJECT_VERSION.tar.gz
     build-packages:
       - gcc
       - scons
