@@ -24,10 +24,33 @@ parts:
       - scons
       - python3
       - python3-dev
+  gpsd-conf:
+    plugin: dump
+    source: config/
+    source-type: local
+    stage:
+      - gpsd
+  gpsd-scripts:
+    plugin: dump
+    source: bin
+    source-type: local
+    stage:
+      - gpsd-service.sh
 
 apps:
+  gpsd-service:
+    command: gpsd-service.sh
+    daemon: simple
+    plugs:
+      - network-bind
+      - shared-memory
+      - serial-port
   gpsd:
     command: usr/local/sbin/gpsd
+    plugs:
+      - network-bind
+      - shared-memory
+      - serial-port
   gegps:
     command: usr/local/bin/gegps
   gps2udp:

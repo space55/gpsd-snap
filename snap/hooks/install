@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+mkdir -p $SNAP_COMMON
+
+if ! test -f $SNAP_COMMON/gpsd
+then
+	echo "Installing default configuration file"
+	# Create a default config file
+	cp $SNAP/gpsd $SNAP_COMMON/gpsd
+fi
